@@ -75,7 +75,7 @@ class Modal extends Component {
       body.classList.add("has-dialog");
       content = (
         <Fragment>
-           <Backdrop className={backdropClass} onClick={this.props.onClose} />
+           <Backdrop className={backdropClass} onClick={this.props.onClose}  />
           <div role="dialog" 
                id="dialog1"
               aria-labelledby="dialog1_label"
