@@ -41,7 +41,7 @@
   [role="alertdialog"],
   [role="dialog"] {
     position: absolute;
-    top: 2rem;
+    top: 4rem;
     left: 50vw; /* move to the middle of the screen (assumes relative parent is the body/viewport) */
     transform: translateX(
       -50%
@@ -187,4 +187,7 @@
 
 .toast.active {
   transform: translateY(0);
+}
+*:focus {
+  border: 5px solid rgba(187, 15, 15, 0.12);
 }
