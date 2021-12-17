@@ -9,7 +9,6 @@ class Portal extends Component {
   constructor(props) {
     super(props);
     this.container = document.createElement("div");
-    
   }
 
   componentDidMount() {
@@ -31,29 +30,29 @@ class Modal extends Component {
     super(props);
     this.focusRef = React.createRef();
     this.setFocusRef = el =>{
-      if(this.props.open && el){
+      if(this.props.isOpen && el){
         this.focusRef = el
       }
     }
     this.state = { focus: false }
   }
 
-  componentDidMount(){
+  componentDidUpdate(){
     this.setFocus();
   }
   setFocus = () =>{
-    if(this.props.open){
-      this.focusRef.focus();
-    }
+    if(this.props.isOpen){
+      this.focusRef.current.focus();
+    } 
   }
 
   onFocus = () =>{
-    if(this.props.open){
+    if(this.props.isOpen){
       this.setState({focus: true});
     }
   }
   onBlur = () =>{
-    if(this.props.open){
+    if(this.props.isOpen){
        this.setState({focus: false});
     }
   }
@@ -64,13 +63,13 @@ class Modal extends Component {
     let modalClass = "hidden";
     let backdropClass = "dialog-backdrop";
 
-    if(!this.props.open){
+    if(!this.props.isOpen){
        body.classList.remove("has-dialog");
     }
-     if(this.props.open && this.props.label){
+     if(this.props.isOpen && this.props.label){
         console.log("focusRef: ", this.focusRef);
     }
-    if (this.props.open) {
+    if (this.props.isOpen) {
       modalClass = "no-scroll";
       backdropClass = "dialog-backdrop active"
       body.classList.add("has-dialog");
@@ -81,13 +80,12 @@ class Modal extends Component {
                id="dialog1"
               aria-labelledby="dialog1_label"
               aria-modal="true" 
-              className={modalClass} open={this.props.open}
+              className={modalClass} 
+              open={this.props.isOpen}
               >
               <h4 className="dialog_label" 
-
-              ref={this.setFocusRef}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur} 
+              onClick={this.setFocus}
+              ref={this.focusRef}
               tabIndex="0"
               
               >{this.props.label}</h4>
