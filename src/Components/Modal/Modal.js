@@ -28,6 +28,7 @@ const Backdrop = props => <div className={props.className} {...props} />;
 class Modal extends Component {
   constructor(props){
     super(props);
+    const KEYCODE = { tab: 9, shift: 16 };
     this.focusRef = React.createRef();
     this.setFocusRef = el =>{
       if(this.props.isOpen && el){
@@ -57,6 +58,10 @@ class Modal extends Component {
     }
   }
 
+  onKeyDown = (e) =>{
+    console.log("key Code: ", e.keyCode);
+  }
+
   render() {
    
     let content = null;
@@ -82,6 +87,8 @@ class Modal extends Component {
               aria-modal="true" 
               className={modalClass} 
               open={this.props.isOpen}
+              onKeyDown={(e) =>  this.onKeyDown(e)}
+              
               >
               <h4 className="dialog_label" 
               onClick={this.setFocus}
