@@ -84,20 +84,18 @@ class Modal extends Component {
           <div role="dialog" 
                id="dialog1"
               aria-labelledby="dialog1_label"
-              aria-modal="true" 
               className={modalClass} 
               open={this.props.isOpen}
               onKeyDown={(e) =>  this.onKeyDown(e)}
-              
               >
               <h4 className="dialog_label" 
               onClick={this.setFocus}
               ref={this.focusRef}
               tabIndex="0"
-              
               >{this.props.label}</h4>
             {this.props.children}
           </div>
+          <div ref={this.labelRef} tabIndex="0"></div>
         </Fragment>
       );
     }
