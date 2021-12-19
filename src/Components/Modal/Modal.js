@@ -30,13 +30,19 @@ class Modal extends Component {
     super(props);
     const KEYCODE = { tab: 9, shift: 16 };
     this.focusRef = React.createRef();
-    this.dialog = document.getElementById("modal-root");
+    this.dialog = null;
     this.setFocusRef = el =>{
       if(this.props.isOpen && el){
         this.focusRef = el
       }
     }
     this.state = { focus: false }
+  }
+
+  componentDidMount(){
+    this.dialog = document.getElementById("modal-root");
+    this.dialog.lastFocus = document.activeElement;
+
   }
 
   componentDidUpdate(){
@@ -61,11 +67,27 @@ class Modal extends Component {
 
   onKeyDown = (e) =>{
     if(this.dialog.hasChildNodes()){
-      let children = this.dialog.childNodes;
+      let child = this.dialog.childNodes;
       let lastchild = this.dialog.lastChild;
-      console.log("childNodes: ", children);
+      let prevNode = this.dialog.parentNode;
+      let prevSibling = this.dialog.previousSibling;
+      let target = this.dialog.contains(e.target);
+      if(this.dialog.contains(e.target)){
+        this.dialog.lastFocus = e.target;
+      }
+
+      console.log("childNodes: ", child);
       console.log("lastChild: ", lastchild);
+      console.log("prevNode: ", prevNode);
+      console.log("prevSibling: ", prevSibling);
+      console.log("target: ", target);
+      console.log("lastFocus: ", this.dialog.lastFocus);
+
     }
+     if(!this.dialog.lastChild.contains(e.target)){
+       console.log("hi! i'm here");
+       return;
+      }
    
     
   }
@@ -87,8 +109,8 @@ class Modal extends Component {
       backdropClass = "dialog-backdrop active"
       body.classList.add("has-dialog");
       content = (
-        <Fragment>
-           <Backdrop className={backdropClass} onClick={this.props.onClose}  />
+        <div>
+           <Backdrop className={backdropClass} onClick={this.props.onClose}  >
           <div role="dialog" 
                id="dialog1"
               aria-labelledby="dialog1_label"
@@ -103,8 +125,8 @@ class Modal extends Component {
               >{this.props.label}</h4>
             {this.props.children}
           </div>
-          <div ref={this.labelRef} tabIndex="0"></div>
-        </Fragment>
+         </Backdrop>
+        </div>
       );
     }
     return (
