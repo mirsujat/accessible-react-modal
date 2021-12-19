@@ -30,6 +30,7 @@ class Modal extends Component {
     super(props);
     const KEYCODE = { tab: 9, shift: 16 };
     this.focusRef = React.createRef();
+    this.dialog = document.getElementById("modal-root");
     this.setFocusRef = el =>{
       if(this.props.isOpen && el){
         this.focusRef = el
@@ -59,7 +60,14 @@ class Modal extends Component {
   }
 
   onKeyDown = (e) =>{
-    console.log("key Code: ", e.keyCode);
+    if(this.dialog.hasChildNodes()){
+      let children = this.dialog.childNodes;
+      let lastchild = this.dialog.lastChild;
+      console.log("childNodes: ", children);
+      console.log("lastChild: ", lastchild);
+    }
+   
+    
   }
 
   render() {
