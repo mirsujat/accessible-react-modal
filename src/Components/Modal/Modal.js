@@ -41,8 +41,6 @@ class Modal extends Component {
 
   componentDidMount(){
     this.dialog = document.getElementById("modal-root");
-    this.dialog.lastFocus = document.activeElement;
-
   }
 
   componentDidUpdate(){
@@ -65,30 +63,44 @@ class Modal extends Component {
     }
   }
 
-  onKeyDown = (e) =>{
-    if(this.dialog.hasChildNodes()){
-      let child = this.dialog.childNodes;
-      let lastchild = this.dialog.lastChild;
-      let prevNode = this.dialog.parentNode;
-      let prevSibling = this.dialog.previousSibling;
-      let target = this.dialog.contains(e.target);
-      if(this.dialog.contains(e.target)){
-        this.dialog.lastFocus = e.target;
-      }
-
-      console.log("childNodes: ", child);
-      console.log("lastChild: ", lastchild);
-      console.log("prevNode: ", prevNode);
-      console.log("prevSibling: ", prevSibling);
-      console.log("target: ", target);
-      console.log("lastFocus: ", this.dialog.lastFocus);
-
+  onKeyUp = (e) =>{
+    const rootNode = document.getElementById("dialog1");
+    if(rootNode.hasChildNodes()){
+      let child = rootNode.childNodes;
+      let lastchild = rootNode.lastChild;
+      let prevNode = rootNode.parentNode;
+    console.log("childNodes: ", child);
+    console.log("lastChild: ", lastchild);
+    console.log("prevNode: ", prevNode);
+    if(rootNode.lastChild.contains(e.target) ){
+      console.log("last Target: ", "Last Target");
+      this.setFocus();
     }
-     if(!this.dialog.lastChild.contains(e.target)){
-       console.log("hi! i'm here");
-       return;
-      }
-   
+    }
+    // if(this.dialog.hasChildNodes()){
+    //   let child = this.dialog.childNodes;
+    //   let lastchild = this.dialog.lastChild;
+    //   let prevNode = this.dialog.parentNode;
+    //   let prevSibling = this.dialog.previousSibling;
+    //   let target = this.dialog.contains(e.target);
+    //   for (let i = 0; i < child.length; i++) {
+    //     // do something with each child as children[i]
+    //     // NOTE: List is live! Adding or removing children will change the list's `length`
+
+    //   }
+    //   console.log("childNodes: ", child);
+    //   console.log("lastChild: ", lastchild);
+    //   console.log("prevNode: ", prevNode);
+    //   console.log("prevSibling: ", prevSibling);
+    //   console.log("target: ", target);
+    //   console.log("lastFocus: ", this.dialog.lastFocus);
+    //   if(!this.dialog.contains(e.target)){
+    //     console.log("hi! i'm here");
+    //     this.setFocus();
+    //     return;
+    //    }
+
+    // }
     
   }
 
@@ -116,7 +128,7 @@ class Modal extends Component {
               aria-labelledby="dialog1_label"
               className={modalClass} 
               open={this.props.isOpen}
-              onKeyDown={(e) =>  this.onKeyDown(e)}
+              onKeyUp={(e) =>  this.onKeyUp(e)}
               >
               <h4 className="dialog_label" 
               onClick={this.setFocus}
@@ -124,7 +136,9 @@ class Modal extends Component {
               tabIndex="0"
               >{this.props.label}</h4>
             {this.props.children}
+            <div tabIndex="0"></div>
           </div>
+          
          </Backdrop>
         </div>
       );
