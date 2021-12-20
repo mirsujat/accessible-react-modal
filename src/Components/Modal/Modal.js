@@ -28,7 +28,7 @@ const Backdrop = props => <div className={props.className} {...props} />;
 class Modal extends Component {
   constructor(props){
     super(props);
-    const KEYCODE = { tab: 9, shift: 16 };
+    this.KEYCODE = { tab: 9, shift: 16 };
     this.focusRef = React.createRef();
     this.dialog = null;
     this.setFocusRef = el =>{
@@ -83,32 +83,12 @@ class Modal extends Component {
       console.log("firstChild: ", "firstChild");
       this.setFocus();
     }
+    if(this.focusRef === document.activeElement & e.keyCode ===  this.KEYCODE.shift &&  this.KEYCODE.tab){
+      console.log("lastchild.previousSibling ;", lastchild.previousSibling );
+      
     }
-    // if(this.dialog.hasChildNodes()){
-    //   let child = this.dialog.childNodes;
-    //   let lastchild = this.dialog.lastChild;
-    //   let prevNode = this.dialog.parentNode;
-    //   let prevSibling = this.dialog.previousSibling;
-    //   let target = this.dialog.contains(e.target);
-    //   for (let i = 0; i < child.length; i++) {
-    //     // do something with each child as children[i]
-    //     // NOTE: List is live! Adding or removing children will change the list's `length`
+    }
 
-    //   }
-    //   console.log("childNodes: ", child);
-    //   console.log("lastChild: ", lastchild);
-    //   console.log("prevNode: ", prevNode);
-    //   console.log("prevSibling: ", prevSibling);
-    //   console.log("target: ", target);
-    //   console.log("lastFocus: ", this.dialog.lastFocus);
-    //   if(!this.dialog.contains(e.target)){
-    //     console.log("hi! i'm here");
-    //     this.setFocus();
-    //     return;
-    //    }
-
-    // }
-    
   }
 
   render() {
@@ -132,19 +112,20 @@ class Modal extends Component {
            <Backdrop className={backdropClass} onClick={this.props.onClose}  >
           <div role="dialog" 
                id="dialog1"
+               aria-modal="true"
               aria-labelledby="dialog1_label"
               className={modalClass} 
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
-              <div tabIndex="0"></div>
+              <div className="focus_trap" tabIndex="0"></div>
               <h4 className="dialog_label" 
               onClick={this.setFocus}
               ref={this.focusRef}
               tabIndex="0"
               >{this.props.label}</h4>
             {this.props.children}
-            <div tabIndex="0"></div>
+            <div className="focus_trap" tabIndex="0"></div>
           </div>
           
          </Backdrop>
