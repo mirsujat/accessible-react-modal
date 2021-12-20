@@ -67,13 +67,20 @@ class Modal extends Component {
     const rootNode = document.getElementById("dialog1");
     if(rootNode.hasChildNodes()){
       let child = rootNode.childNodes;
+      let firstChild = rootNode.firstChild;
       let lastchild = rootNode.lastChild;
       let prevNode = rootNode.parentNode;
     console.log("childNodes: ", child);
     console.log("lastChild: ", lastchild);
     console.log("prevNode: ", prevNode);
+    console.log("firstChild: ", firstChild);
+
     if(rootNode.lastChild.contains(e.target) ){
       console.log("last Target: ", "Last Target");
+      this.setFocus();
+    }
+    if(rootNode.firstChild.contains(e.target) ){
+      console.log("firstChild: ", "firstChild");
       this.setFocus();
     }
     }
@@ -130,6 +137,7 @@ class Modal extends Component {
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
+              <div tabIndex="0"></div>
               <h4 className="dialog_label" 
               onClick={this.setFocus}
               ref={this.focusRef}
