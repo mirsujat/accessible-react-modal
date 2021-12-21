@@ -36,7 +36,7 @@ class Modal extends Component {
         this.focusRef = el
       }
     }
-    this.state = { focus: false }
+    this.state = { focus: false,  focusChanges : false}
   }
 
   componentDidMount(){
@@ -46,6 +46,75 @@ class Modal extends Component {
   componentDidUpdate(){
     this.setFocus();
   }
+
+  focusFirstDescendant = function (element) {
+    for (var i = 0; i < element.childNodes.length; i++) {
+      var child = element.childNodes[i];
+      if (this.attemptFocus(child) ||
+          this.focusFirstDescendant(child)) {
+        return true;
+      }
+    }
+    return false;
+  }; // end focusFirstDescendant
+
+  /**
+   * @desc Find the last descendant node that is focusable.
+   * @param element
+   *          DOM node for which to find the last focusable descendant.
+   * @returns
+   *  true if a focusable element is found and focus is set.
+   */
+  focusLastDescendant = function (element) {
+    for (var i = element.childNodes.length - 1; i >= 0; i--) {
+      var child = element.childNodes[i];
+      if (this.attemptFocus(child) ||
+          this.focusLastDescendant(child)) {
+        return true;
+      }
+    }
+    return false;
+  }; // end focusLastDescendant
+
+  isFocusable = function (element) {
+    if (element.tabIndex > 0 || (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)) {
+      return true;
+    }
+  
+    if (element.disabled) {
+      return false;
+    }
+  
+    switch (element.nodeName) {
+      case 'A':
+        return !!element.href && element.rel != 'ignore';
+      case 'INPUT':
+        return element.type != 'hidden' && element.type != 'file';
+      case 'BUTTON':
+      case 'SELECT':
+      case 'TEXTAREA':
+        return true;
+      default:
+        return false;
+    }
+  }; // End isFocusable
+
+  attemptFocus = function (element) {
+    if (!this.isFocusable(element)) {
+      return false;
+    }
+
+    this.setState({focusChanges : true });
+
+    try {
+      element.focus();
+    }
+    catch (e) {
+    }
+    this.setState({focusChanges : false });
+    return (document.activeElement === element);
+  }; // end attemptFocus
+
   setFocus = () =>{
     if(this.props.isOpen){
       this.focusRef.current.focus();
@@ -75,21 +144,20 @@ class Modal extends Component {
     console.log("prevNode: ", prevNode);
     console.log("firstChild: ", firstChild);
 
-    if(rootNode.lastChild.contains(e.target) ){
-      console.log("last Target: ", "Last Target");
-      this.setFocus();
-    }
-    if(rootNode.firstChild.contains(e.target) ){
-      console.log("firstChild: ", "firstChild");
-      this.setFocus();
-    }
-    if(this.focusRef === document.activeElement & e.keyCode ===  this.KEYCODE.shift &&  this.KEYCODE.tab){
-      console.log("lastchild.previousSibling ;", lastchild.previousSibling );
-      
-    }
+    // if(rootNode.lastChild.contains(e.target) ){
+    //   console.log("last Target: ", "Last Target");
+    //   this.setFocus();
+    // }
+    // if(rootNode.firstChild.contains(e.target) ){
+    //   console.log("firstChild: ", "firstChild");
+    //   this.setFocus();
+    // }
+    
     }
 
   }
+
+
 
   render() {
    
@@ -110,7 +178,8 @@ class Modal extends Component {
       content = (
         <div>
            <Backdrop className={backdropClass} onClick={this.props.onClose}  >
-          <div role="dialog" 
+           <div className="focus_trap" tabIndex="0"></div>
+           <div role="dialog" 
                id="dialog1"
                aria-modal="true"
               aria-labelledby="dialog1_label"
@@ -118,16 +187,17 @@ class Modal extends Component {
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
-              <div className="focus_trap" tabIndex="0"></div>
+             
               <h4 className="dialog_label" 
               onClick={this.setFocus}
               ref={this.focusRef}
               tabIndex="0"
-              >{this.props.label}</h4>
+              >
+                {this.props.label}
+              </h4>
             {this.props.children}
-            <div className="focus_trap" tabIndex="0"></div>
-          </div>
-          
+            </div>
+          <div className="focus_trap" tabIndex="0"></div>
          </Backdrop>
         </div>
       );
