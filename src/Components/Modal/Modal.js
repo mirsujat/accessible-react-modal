@@ -29,11 +29,12 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.KEYCODE = { tab: 9, shift: 16 };
-    this.focusRef = React.createRef();
+    this.focusFirst = React.createRef();
     this.dialog = null;
+     this.dialog1 = null;
     this.setFocusRef = el =>{
       if(this.props.isOpen && el){
-        this.focusRef = el
+        this.focusFirst = el
       }
     }
     this.state = { focus: false,  focusChanges : false}
@@ -41,13 +42,65 @@ class Modal extends Component {
 
   componentDidMount(){
     this.dialog = document.getElementById("modal-root");
+    this.dialog1 = document.getElementById("dialog1");
+    console.log("dialog1: ", this.dialog);
   }
 
   componentDidUpdate(){
     this.setFocus();
   }
 
-  focusFirstDescendant = function (element) {
+ 
+
+  attemptFocus = function (element) {
+    if (!this.isFocusable(element)) {
+      return false;
+    }
+
+    this.setState({focusChanges : true });
+
+    try {
+      element.focus();
+    }
+    catch (e) {
+    }
+    this.setState({focusChanges : false });
+    return (document.activeElement === element);
+  }; // end attemptFocus
+
+  setFocus = () =>{
+    if(this.props.isOpen){
+      this.focusFirst.current.focus();
+    } 
+  }
+
+  onFocus = () =>{
+    if(this.props.isOpen){
+      this.setState({focus: true});
+    }
+  }
+  onBlur = () =>{
+    if(this.props.isOpen){
+       this.setState({focus: false});
+    }
+  }
+
+  onKeyUp = (e) =>{
+    const rootNode = document.getElementById("dialog1");
+    if(rootNode.hasChildNodes()){
+      let child = rootNode.childNodes;
+      let firstChild = rootNode.firstChild;
+      let lastchild = rootNode.lastChild.lastChild;
+      let prevNode = rootNode.parentNode;
+    console.log("childNodes: ", child);
+    console.log("lastChild: ", lastchild);
+    console.log("prevNode: ", prevNode);
+    console.log("firstChild: ", firstChild);
+     
+     
+    }
+  }
+ focusFirstDescendant = function (element) {
     for (var i = 0; i < element.childNodes.length; i++) {
       var child = element.childNodes[i];
       if (this.attemptFocus(child) ||
@@ -99,77 +152,19 @@ class Modal extends Component {
     }
   }; // End isFocusable
 
-  attemptFocus = function (element) {
-    if (!this.isFocusable(element)) {
-      return false;
-    }
-
-    this.setState({focusChanges : true });
-
-    try {
-      element.focus();
-    }
-    catch (e) {
-    }
-    this.setState({focusChanges : false });
-    return (document.activeElement === element);
-  }; // end attemptFocus
-
-  setFocus = () =>{
-    if(this.props.isOpen){
-      this.focusRef.current.focus();
-    } 
-  }
-
-  onFocus = () =>{
-    if(this.props.isOpen){
-      this.setState({focus: true});
-    }
-  }
-  onBlur = () =>{
-    if(this.props.isOpen){
-       this.setState({focus: false});
-    }
-  }
-
-  onKeyUp = (e) =>{
-    const rootNode = document.getElementById("dialog1");
-    if(rootNode.hasChildNodes()){
-      let child = rootNode.childNodes;
-      let firstChild = rootNode.firstChild;
-      let lastchild = rootNode.lastChild;
-      let prevNode = rootNode.parentNode;
-    console.log("childNodes: ", child);
-    console.log("lastChild: ", lastchild);
-    console.log("prevNode: ", prevNode);
-    console.log("firstChild: ", firstChild);
-
-    // if(rootNode.lastChild.contains(e.target) ){
-    //   console.log("last Target: ", "Last Target");
-    //   this.setFocus();
-    // }
-    // if(rootNode.firstChild.contains(e.target) ){
-    //   console.log("firstChild: ", "firstChild");
-    //   this.setFocus();
-    // }
-    
-    }
-
-  }
-
-
 
   render() {
    
     let content = null;
     let modalClass = "hidden";
     let backdropClass = "dialog-backdrop";
+    
 
     if(!this.props.isOpen){
        body.classList.remove("has-dialog");
     }
      if(this.props.isOpen && this.props.label){
-        console.log("focusRef: ", this.focusRef);
+        console.log("focusFirst: ", this.focusFirst);
     }
     if (this.props.isOpen) {
       modalClass = "no-scroll";
@@ -190,7 +185,7 @@ class Modal extends Component {
              
               <h4 className="dialog_label" 
               onClick={this.setFocus}
-              ref={this.focusRef}
+              ref={this.focusFirst}
               tabIndex="0"
               >
                 {this.props.label}
