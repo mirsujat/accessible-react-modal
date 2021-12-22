@@ -193,8 +193,6 @@
   display: inline-block;
   position: absolute;
   top: -20px;
-  width: 1px;
-  height: 1px;
   background-color: white;
 }
 .focus_trap:focus {
@@ -203,4 +201,8 @@
   display: inline-block;
   position: absolute;
   top: -20px;
+}
+*:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
 }

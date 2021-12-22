@@ -37,7 +37,7 @@ class Modal extends Component {
     this.firstFocus = React.createRef();
     // last focusable element inside dialog
     this.lastFocus = React.createRef();
-
+    
     //focusAfterClose
     this.focusAfterClose = document.getElementById(this.props.focusAfterClose);
     this.state = { focus: false}
@@ -51,9 +51,9 @@ class Modal extends Component {
   componentDidUpdate(){
     this.setFocus();
   }
-  componentWillUnmount(){
-     this.focusAfterClose.focus();
-  }
+  // componentWillUnmount(){
+  //    this.focusAfterClose.focus();
+  // }
 
   setFocus = () =>{
     if(this.props.isOpen){
@@ -67,14 +67,14 @@ class Modal extends Component {
     }
   }
   onBlur = () =>{
-    if(this.props.isOpen){
+    if(!this.props.isOpen){
        this.setState({focus: false});
     }
   }
 
   onKeyUp = (e) =>{
     const rootNode = document.getElementById("dialog1");
-    if(rootNode.hasChildNodes() ){
+    if(rootNode.hasChildNodes()){
       if(rootNode.nextSibling.contains(e.target)){
           this.setFocus();
      }
@@ -84,10 +84,7 @@ class Modal extends Component {
     }
   }
 
-  onClick = (e) =>{
-    this.props.onClick();
-    e.stopPropagation();
-  }
+
 
   render() {
    
@@ -108,7 +105,7 @@ class Modal extends Component {
       body.classList.add("has-dialog");
       content = (
         <div>
-           <Backdrop className={backdropClass} onClick={(e) => this.onClick(e)}  >
+           <Backdrop className={backdropClass} onClick={this.props.onClose}  > </Backdrop>
            <div id="first" className="focus_trap" tabIndex="0" ref={this.prevElRef} 
            onKeyUp={(e) =>  this.onKeyUp(e)}></div>
            <div role="dialog" 
@@ -124,6 +121,8 @@ class Modal extends Component {
               id="dialog1_label"
               className="dialog_label" 
               onClick={this.setFocus}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
               ref={this.firstFocus}
               tabIndex="0"
               >
@@ -132,12 +131,12 @@ class Modal extends Component {
             {this.props.children}
             <div className="content-footer">
                 <button>Ok</button>
-                <button  onClick={ (e) => this.onClick(e)} ref={this.lastFocus}>Cancel</button>
+                <button  onClick={this.props.onClose} ref={this.lastFocus}>Cancel</button>
             </div>
             </div>
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
           onKeyUp={(e) =>  this.onKeyUp(e)}  ></div>
-         </Backdrop>
+        
         </div>
       );
     }
