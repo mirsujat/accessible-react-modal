@@ -30,8 +30,10 @@ class Modal extends Component {
     super(props);
     this.KEYCODE = { tab: 9, shift: 16 };
     this.focusFirst = React.createRef();
+    this.firstFocus = React.createRef();
+    this.lastFocus = React.createRef();
     this.dialog = null;
-     this.dialog1 = null;
+     this.dialog1 = null || {};
     this.setFocusRef = el =>{
       if(this.props.isOpen && el){
         this.focusFirst = el
@@ -43,30 +45,16 @@ class Modal extends Component {
   componentDidMount(){
     this.dialog = document.getElementById("modal-root");
     this.dialog1 = document.getElementById("dialog1");
-    console.log("dialog1: ", this.dialog);
+    console.log("dialog: ", this.dialog);
   }
 
-  componentDidUpdate(){
-    this.setFocus();
-  }
+  // componentDidUpdate(){
+  //   this.setFocus();
+  // }
 
  
 
-  attemptFocus = function (element) {
-    if (!this.isFocusable(element)) {
-      return false;
-    }
-
-    this.setState({focusChanges : true });
-
-    try {
-      element.focus();
-    }
-    catch (e) {
-    }
-    this.setState({focusChanges : false });
-    return (document.activeElement === element);
-  }; // end attemptFocus
+ 
 
   setFocus = () =>{
     if(this.props.isOpen){
@@ -87,19 +75,29 @@ class Modal extends Component {
 
   onKeyUp = (e) =>{
     const rootNode = document.getElementById("dialog1");
-    if(rootNode.hasChildNodes()){
-      let child = rootNode.childNodes;
+    if(rootNode.hasChildNodes() ){
+      let childNodes = rootNode.childNodes;
+      let children = rootNode.children;
       let firstChild = rootNode.firstChild;
       let lastchild = rootNode.lastChild.lastChild;
-      let prevNode = rootNode.parentNode;
-    console.log("childNodes: ", child);
-    console.log("lastChild: ", lastchild);
-    console.log("prevNode: ", prevNode);
-    console.log("firstChild: ", firstChild);
-     
-     
+      let parentNode = rootNode.parentNode;
+      let previousSibling = rootNode.previousSibling;
+      let nextSibling = rootNode.nextSibling;
+      // this.focusFirstDescendant(rootNode);
+      this.focusLastDescendant(rootNode);
+
+    console.log("childNodes: ", childNodes);
+    // console.log("children: ", children);
+    // console.log("lastChild: ", lastchild);
+    // console.log("prevNode: ", parentNode);
+    // console.log("firstChild: ", firstChild);
+    // console.log("previousSibling: ", previousSibling);
+    // console.log("nextSibling: ", nextSibling);
+
     }
   }
+
+  
  focusFirstDescendant = function (element) {
     for (var i = 0; i < element.childNodes.length; i++) {
       var child = element.childNodes[i];
@@ -140,9 +138,9 @@ class Modal extends Component {
   
     switch (element.nodeName) {
       case 'A':
-        return !!element.href && element.rel != 'ignore';
+        return !!element.href && element.rel !== 'ignore';
       case 'INPUT':
-        return element.type != 'hidden' && element.type != 'file';
+        return element.type !== 'hidden' && element.type !== 'file';
       case 'BUTTON':
       case 'SELECT':
       case 'TEXTAREA':
@@ -151,7 +149,21 @@ class Modal extends Component {
         return false;
     }
   }; // End isFocusable
+  attemptFocus = function (element) {
+    if (!this.isFocusable(element)) {
+      return false;
+    }
 
+    this.setState({focusChanges : true });
+
+    try {
+      element.focus();
+    }
+    catch (e) {
+    }
+    this.setState({focusChanges : false });
+    return (document.activeElement === element);
+  }; // end attemptFocus
 
   render() {
    
@@ -173,7 +185,7 @@ class Modal extends Component {
       content = (
         <div>
            <Backdrop className={backdropClass} onClick={this.props.onClose}  >
-           <div className="focus_trap" tabIndex="0"></div>
+           <div id="first" className="focus_trap" tabIndex="0" ref={this.firstFocus}></div>
            <div role="dialog" 
                id="dialog1"
                aria-modal="true"
@@ -192,7 +204,7 @@ class Modal extends Component {
               </h4>
             {this.props.children}
             </div>
-          <div className="focus_trap" tabIndex="0"></div>
+          <div id="last" className="focus_trap" tabIndex="0" ref={this.lastFocus}></div>
          </Backdrop>
         </div>
       );
