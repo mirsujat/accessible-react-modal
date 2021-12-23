@@ -28,7 +28,8 @@ const Backdrop = props => <div className={props.className} {...props} />;
 class Modal extends Component {
   constructor(props){
     super(props);
-    this.KEYCODE = { tab: 9, shift: 16 };
+
+    this.KEYCODE = { tab: 9, shift: 16,  Esc: 27};
     //prev  element to be focus out side dialog
     this.prevElRef = React.createRef();
     //next element to be focus out side dialog
@@ -82,8 +83,13 @@ class Modal extends Component {
         this.lastFocus.current.focus();
      }
     }
+   if(e.keyCode === this.KEYCODE.Esc){
+      this.props.onClose();
+   }
   }
-
+handleEscExit = e =>{
+  
+}
 
 
   render() {
