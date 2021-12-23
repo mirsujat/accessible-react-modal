@@ -16,6 +16,8 @@ class App extends Component {
   }
   closeModal = () => {
     this.setState({ open: false });
+    this.focusAfterClose.current.focus();
+    return;
   }
   
   render() {
