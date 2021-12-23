@@ -32,7 +32,7 @@
 [role="dialog"] {
   box-sizing: border-box;
   padding: 15px;
-  border: 1px solid #000;
+  border: 1px solid rgb(117, 116, 116);
   background-color: #fff;
   min-height: 100vh;
 }
@@ -55,7 +55,10 @@
 .dialog_label {
   text-align: center;
 }
-
+.dialog_title{
+  display: inline-block;
+  padding: 0 5px;
+}
 .dialog_form {
   margin: 15px;
 }
@@ -203,6 +206,6 @@
   top: -20px;
 }
 *:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.7);
+  outline-style: auto;
   border-radius: 5px;
 }

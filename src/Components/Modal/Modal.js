@@ -111,22 +111,27 @@ class Modal extends Component {
            <div role="dialog" 
                id="dialog1"
                aria-modal="true"
-              aria-labelledby="dialog1_label"
+              aria-labelledby={this.props.label}
               className={modalClass} 
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
              
               <h4 
-              id="dialog1_label"
+              id={this.props.label}
               className="dialog_label" 
-              onClick={this.setFocus}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              ref={this.firstFocus}
-              tabIndex="0"
+              
               >
-                {this.props.label}
+                <span
+                className="dialog_title"
+                onClick={this.setFocus}
+                onFocus={this.onFocus}
+                onBlur={this.onBlur}
+                ref={this.firstFocus}
+                tabIndex="0">
+                  {this.props.label}
+                </span>
+               
               </h4>
             {this.props.children}
             <div className="content-footer">
