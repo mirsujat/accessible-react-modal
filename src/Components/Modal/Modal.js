@@ -38,22 +38,22 @@ class Modal extends Component {
     // last focusable element inside dialog
     this.lastFocus = React.createRef();
     
+    
     //focusAfterClose
-    this.focusAfterClose = document.getElementById(this.props.focusAfterClose);
     this.state = { focus: false}
   }
 
   componentDidMount(){
     this.dialog1 = document.getElementById("dialog1");
+   
     
   }
 
   componentDidUpdate(){
     this.setFocus();
+  
   }
-  // componentWillUnmount(){
-  //    this.focusAfterClose.focus();
-  // }
+ 
 
   setFocus = () =>{
     if(this.props.isOpen){
@@ -88,15 +88,18 @@ class Modal extends Component {
 
   render() {
    
+   
+
     let content = null;
     let modalClass = "hidden";
     let backdropClass = "dialog-backdrop";
+
     
 
     if(!this.props.isOpen){
        body.classList.remove("has-dialog");
-
     }
+    //TODO
      if(this.props.isOpen && this.props.label){
     }
     if (this.props.isOpen) {

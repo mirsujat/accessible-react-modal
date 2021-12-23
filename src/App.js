@@ -6,6 +6,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.focusAfterClose = React.createRef();
     this.state = { open: false }
   }
 
@@ -16,6 +17,7 @@ class App extends Component {
   closeModal = () => {
     this.setState({ open: false });
   }
+  
   render() {
     return (
       <div className="App">
@@ -23,7 +25,7 @@ class App extends Component {
           Hello From Accessible React Modal
         </header>
         <section>
-          <button id="focusAfterClose" onClick={this.openModal} >Awesome Modal</button>
+          <button ref={this.focusAfterClose} onClick={this.openModal} >Awesome Modal</button>
         </section>
         <section>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugiat minus nesciunt itaque molestiae nisi esse a amet praesentium in rerum non, cupiditate autem laboriosam, unde inventore quidem accusantium cumque.</p>
@@ -34,7 +36,6 @@ class App extends Component {
           isOpen={this.state.open}
           onClose={this.closeModal}
           label="Awesome Modal"
-          focusAfterClose="focusAfterClose"
         >
           <section>
             <h4>This a awesome Modal</h4>
