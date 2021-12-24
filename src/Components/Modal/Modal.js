@@ -40,10 +40,7 @@ class Modal extends Component {
     this.lastFocus = React.createRef();
    
      //focusAfterClose
-     this.focusAfter = null;
-    if(this.props.isOpen && this.props.focusAfter){
-         this.focusAfter =  document.getElementById("focusAfter");
-    }
+     this.focusAfterClose = null;
    
     //init stat
     this.state = { focus: false}
@@ -58,7 +55,7 @@ class Modal extends Component {
 
   componentDidUpdate(){
     this.setFocus();
-  this.focusAfter =  window.document.getElementsByClassName("focusAfter");
+  this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
   }
  
 
@@ -90,15 +87,15 @@ class Modal extends Component {
      }
     }
    if(e.keyCode === 32){
-      this.props.onClose();
-      this.focusAfter[0].focus();
+    this.handleClose();
    }
   //  console.log("keyCode: ", e.keyCode);
   }
-handleEscExit = e =>{
-  
-}
 
+handleClose = () =>{
+    this.props.onClose();
+    this.focusAfterClose[0].focus();
+}
 
   render() {
     
@@ -126,7 +123,7 @@ handleEscExit = e =>{
       body.classList.add("has-dialog");
       content = (
         <div>
-           <Backdrop className={backdropClass} onClick={this.props.onClose}  > </Backdrop>
+           <Backdrop className={backdropClass} onClick={this.handleClose}  > </Backdrop>
            <div id="first" className="focus_trap" tabIndex="0" ref={this.prevElRef} 
            onKeyUp={(e) =>  this.onKeyUp(e)}></div>
            <div role="dialog" 
@@ -157,7 +154,7 @@ handleEscExit = e =>{
             {this.props.children}
             <div className="content-footer">
                 <button>Ok</button>
-                <button  onClick={this.props.onClose} ref={this.lastFocus}>Cancel</button>
+                <button  onClick={this.handleClose} ref={this.lastFocus}>Cancel</button>
             </div>
             </div>
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
