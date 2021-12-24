@@ -39,6 +39,12 @@ class Modal extends Component {
     // last focusable element inside dialog
     this.lastFocus = React.createRef();
    
+     //focusAfterClose
+     this.focusAfter = null;
+    if(this.props.isOpen && this.props.focusAfter){
+         this.focusAfter =  document.getElementById("focusAfter");
+    }
+   
     //init stat
     this.state = { focus: false}
 
@@ -52,7 +58,7 @@ class Modal extends Component {
 
   componentDidUpdate(){
     this.setFocus();
-  
+  this.focusAfter =  window.document.getElementsByClassName("focusAfter");
   }
  
 
@@ -85,6 +91,7 @@ class Modal extends Component {
     }
    if(e.keyCode === 32){
       this.props.onClose();
+      this.focusAfter[0].focus();
    }
   //  console.log("keyCode: ", e.keyCode);
   }
@@ -94,13 +101,12 @@ handleEscExit = e =>{
 
 
   render() {
-     //focusAfterClose
-    let focusAfter = document.getElementById("focusAfter");
+    
    if(this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", focusAfter);
+    console.log("focusAfter: ", this.focusAfter);
    }
       if(!this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", focusAfter);
+    console.log("focusAfter: ", this.focusAfter);
    }
    
 

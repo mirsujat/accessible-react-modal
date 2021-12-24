@@ -19,8 +19,8 @@ class App extends Component {
   }
   closeModal = () => {
     this.setState({ open: false });
-    this.focusAfterClose.current.focus();
-    return;
+    // this.focusAfterClose.current.focus();
+    // return;
   }
 
    
@@ -32,7 +32,7 @@ class App extends Component {
           Hello From Accessible React Modal
         </header>
         <section>
-          <button id="focusAfter" ref={this.focusAfterClose} onClick={this.openModal} >Awesome Modal</button>
+          <button className="focusAfter"  onClick={this.openModal} >Awesome Modal</button>
         </section>
         <section>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugiat minus nesciunt itaque molestiae nisi esse a amet praesentium in rerum non, cupiditate autem laboriosam, unde inventore quidem accusantium cumque.</p>
