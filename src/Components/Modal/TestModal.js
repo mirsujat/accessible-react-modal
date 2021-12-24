@@ -38,42 +38,35 @@ class Modal extends Component {
     this.firstFocus = React.createRef();
     // last focusable element inside dialog
     this.lastFocus = React.createRef();
-   
     //init stat
     this.state = { focus: false}
+    this.content = null;
+    this.modalClass = "hidden";
+    this.backdropClass = "dialog-backdrop";
 
-
-  }
-
-  componentDidMount(){
-    this.dialog1 = document.getElementById("dialog1");
     
-  }
-
-  componentDidUpdate(){
-    this.setFocus();
-  
-  }
  
 
-  setFocus = () =>{
+
+    this.setFocus = () =>{
+      
     if(this.props.isOpen){
       this.firstFocus.current.focus();
     } 
   }
 
-  onFocus = () =>{
+  this.onFocus = () =>{
     if(this.props.isOpen){
       this.setState({focus: true});
     }
   }
-  onBlur = () =>{
+  this.onBlur = () =>{
     if(!this.props.isOpen){
        this.setState({focus: false});
     }
   }
 
-  onKeyUp = (e) =>{
+  this.onKeyUp = (e) =>{
     const rootNode = document.getElementById("dialog1");
     if(rootNode.hasChildNodes()){
       if(rootNode.nextSibling.contains(e.target)){
@@ -86,48 +79,49 @@ class Modal extends Component {
    if(e.keyCode === 32){
       this.props.onClose();
    }
-  //  console.log("keyCode: ", e.keyCode);
+   console.log("keyCode: ", e.keyCode);
   }
+    
+
+  }
+
+  // componentDidMount(){
+  //   this.dialog1 = document.getElementById("dialog1");
+  // }
+
+  componentDidUpdate(){
+    this.setFocus();
+  
+  }
+ 
+
 handleEscExit = e =>{
   
 }
 
 
   render() {
-     //focusAfterClose
-    let focusAfter = document.getElementById("focusAfter");
-   if(this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", focusAfter);
-   }
-      if(!this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", focusAfter);
-   }
-   
-
-    let content = null;
-    let modalClass = "hidden";
-    let backdropClass = "dialog-backdrop";
-
     
-
     if(!this.props.isOpen){
        body.classList.remove("has-dialog");
     }
- 
+    //TODO
+     if(this.props.isOpen && this.props.label){
+    }
     if (this.props.isOpen) {
-      modalClass = "no-scroll";
-      backdropClass = "dialog-backdrop active"
+      this.modalClass = "no-scroll";
+      this.backdropClass = "dialog-backdrop active"
       body.classList.add("has-dialog");
-      content = (
+      this.content = (
         <div>
-           <Backdrop className={backdropClass} onClick={this.props.onClose}  > </Backdrop>
+           <Backdrop className={this.backdropClass} onClick={this.props.onClose}  > </Backdrop>
            <div id="first" className="focus_trap" tabIndex="0" ref={this.prevElRef} 
            onKeyUp={(e) =>  this.onKeyUp(e)}></div>
            <div role="dialog" 
                id="dialog1"
                aria-modal="true"
               aria-labelledby={this.props.label}
-              className={modalClass} 
+              className={this.modalClass} 
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
@@ -160,9 +154,10 @@ handleEscExit = e =>{
         </div>
       );
     }
+  
     return (
       <Portal>
-        <Fragment>{content}</Fragment>
+        <Fragment>{this.content}</Fragment>
       </Portal>
     );
   }
