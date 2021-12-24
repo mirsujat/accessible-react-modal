@@ -41,6 +41,9 @@ class Modal extends Component {
    
      //focusAfterClose
      this.focusAfterClose = null;
+     if(this.props.focusAfterClose){
+        this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
+      }
    
     //init stat
     this.state = { focus: false}
@@ -55,14 +58,19 @@ class Modal extends Component {
 
   componentDidUpdate(){
     this.setFocus();
-  this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
   }
  
-
+  getFocusAfterClose = () =>{
+    if(!this.props.focusAfterClose) return;
+    if(this.props.focusAfterClose){
+        this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
+      }
+  }
   setFocus = () =>{
+    if(!this.props.isOpen) return; 
     if(this.props.isOpen){
       this.firstFocus.current.focus();
-    } 
+    }
   }
 
   onFocus = () =>{
@@ -93,18 +101,18 @@ class Modal extends Component {
   }
 
 handleClose = () =>{
+  if(this.props.focusAfterClose){
     this.props.onClose();
     this.focusAfterClose[0].focus();
+  }
+  this.props.onClose();
+  
 }
 
   render() {
     
-   if(this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", this.focusAfter);
-   }
-      if(!this.props.isOpen && this.props.focusAfter){
-    console.log("focusAfter: ", this.focusAfter);
-   }
+   
+
    
 
     let content = null;
@@ -116,8 +124,9 @@ handleClose = () =>{
     if(!this.props.isOpen){
        body.classList.remove("has-dialog");
     }
+
  
-    if (this.props.isOpen) {
+    if (this.props.isOpen ) {
       modalClass = "no-scroll";
       backdropClass = "dialog-backdrop active"
       body.classList.add("has-dialog");

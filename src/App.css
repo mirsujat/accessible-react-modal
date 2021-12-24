@@ -55,7 +55,7 @@
 .dialog_label {
   text-align: center;
 }
-.dialog_title{
+.dialog_title {
   display: inline-block;
   padding: 0 5px;
 }
@@ -205,7 +205,12 @@
   position: absolute;
   top: -20px;
 }
+
 *:focus {
   outline-style: auto;
   border-radius: 5px;
+}
+.modal_warning {
+  display: block;
+  text-align: center;
 }
