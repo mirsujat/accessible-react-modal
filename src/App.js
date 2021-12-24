@@ -44,7 +44,6 @@ class App extends Component {
           onClose={this.closeModal}
           label="Awesome Modal"
           focusAfterClose="focusAfterClose"
-         
         >
           <section>
             <h4>This a awesome Modal </h4>

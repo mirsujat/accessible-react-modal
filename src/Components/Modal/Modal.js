@@ -41,6 +41,9 @@ class Modal extends Component {
    
      //focusAfterClose
      this.focusAfterClose = null;
+     if(!this.props.focusAfterClose){
+        console.log("You should provide > focusAfterClose < props to receive focus when modal being close.");
+     }
      if(this.props.focusAfterClose){
         this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
       }
@@ -61,7 +64,9 @@ class Modal extends Component {
   }
  
   getFocusAfterClose = () =>{
-    if(!this.props.focusAfterClose) return;
+    if(!this.props.focusAfterClose) {
+     return;
+    };
     if(this.props.focusAfterClose){
         this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
       }
@@ -105,27 +110,19 @@ handleClose = () =>{
     this.props.onClose();
     this.focusAfterClose[0].focus();
   }
-  this.props.onClose();
-  
+  this.props.onClose()
 }
 
   render() {
     
-   
-
-   
-
     let content = null;
     let modalClass = "hidden";
     let backdropClass = "dialog-backdrop";
-
-    
 
     if(!this.props.isOpen){
        body.classList.remove("has-dialog");
     }
 
- 
     if (this.props.isOpen ) {
       modalClass = "no-scroll";
       backdropClass = "dialog-backdrop active"
