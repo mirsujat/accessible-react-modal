@@ -77,7 +77,7 @@ class Modal extends Component {
   }
 
   onKeyUp = (e) =>{
-    const rootNode = document.getElementById("dialog1");
+    const rootNode = document.getElementById(`${this.props.id}`);
     if(rootNode.hasChildNodes()){
       if(rootNode.nextSibling.contains(e.target)){
           this.setFocus();
@@ -120,20 +120,19 @@ handleClose = () =>{
            <div id="first" className="focus_trap" tabIndex="0" ref={this.prevElRef} 
            onKeyUp={(e) =>  this.onKeyUp(e)}></div>
            <div role="dialog" 
-               id="dialog1"
+               id={this.props.id}
                aria-modal="true"
               aria-labelledby={this.props.label}
               className={modalClass} 
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
               >
-             
-              <h4 
+              <div 
               id={this.props.label}
               className="dialog_label" 
               >
                 <span
-                className="dialog_title"
+                className={this.props.titleStyle ? this.props.titleStyle : "dialog_title"}
                 onClick={this.setFocus}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
@@ -141,13 +140,11 @@ handleClose = () =>{
                 tabIndex="0">
                   {this.props.label}
                 </span>
-               
-              </h4>
+              </div>
             {this.props.children}
-            <div className="content-footer">
-                <button>Ok</button>
-                <button  onClick={this.handleClose} ref={this.lastFocus}>Cancel</button>
-            </div>
+
+              <button className={this.props.cancelBtnStyle} onClick={this.handleClose} 
+              ref={this.lastFocus}>Cancel</button>
             </div>
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
           onKeyUp={(e) =>  this.onKeyUp(e)}  ></div>

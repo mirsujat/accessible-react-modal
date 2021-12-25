@@ -195,6 +195,7 @@
 .focus_trap {
   display: inline-block;
   position: absolute;
+  border: none;
   top: -20px;
   background-color: white;
 }
