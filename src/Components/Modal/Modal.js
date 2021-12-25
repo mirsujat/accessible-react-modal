@@ -39,38 +39,25 @@ class Modal extends Component {
     // last focusable element inside dialog
     this.lastFocus = React.createRef();
    
-     //focusAfterClose
+     //focusAfterClose that will receive focus after modal close
      this.focusAfterClose = null;
      if(!this.props.focusAfterClose){
-        console.log("You should provide > focusAfterClose < props to receive focus when modal being close.");
+        console.log("You should provide > focusAfterClose < props to receive focus when modal being closed.");
      }
      if(this.props.focusAfterClose){
         this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
       }
    
-    //init stat
+    //init state
     this.state = { focus: false}
 
-
   }
 
-  componentDidMount(){
-    this.dialog1 = document.getElementById("dialog1");
-    
-  }
 
   componentDidUpdate(){
     this.setFocus();
   }
  
-  getFocusAfterClose = () =>{
-    if(!this.props.focusAfterClose) {
-     return;
-    };
-    if(this.props.focusAfterClose){
-        this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
-      }
-  }
   setFocus = () =>{
     if(!this.props.isOpen) return; 
     if(this.props.isOpen){
@@ -128,7 +115,7 @@ handleClose = () =>{
       backdropClass = "dialog-backdrop active"
       body.classList.add("has-dialog");
       content = (
-        <div>
+        <>
            <Backdrop className={backdropClass} onClick={this.handleClose}  > </Backdrop>
            <div id="first" className="focus_trap" tabIndex="0" ref={this.prevElRef} 
            onKeyUp={(e) =>  this.onKeyUp(e)}></div>
@@ -144,7 +131,6 @@ handleClose = () =>{
               <h4 
               id={this.props.label}
               className="dialog_label" 
-              
               >
                 <span
                 className="dialog_title"
@@ -166,7 +152,7 @@ handleClose = () =>{
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
           onKeyUp={(e) =>  this.onKeyUp(e)}  ></div>
         
-        </div>
+        </>
       );
     }
     return (

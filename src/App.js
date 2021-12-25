@@ -7,7 +7,6 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.focusAfterClose = React.createRef();
    
     this.state = { open: false }
   }
@@ -19,8 +18,6 @@ class App extends Component {
   }
   closeModal = () => {
     this.setState({ open: false });
-    // this.focusAfterClose.current.focus();
-    // return;
   }
 
    
