@@ -95,6 +95,50 @@ In the following description, the term tabbable element refers to any element wi
     </tbody>
 </table>
 
+# Role, Property, State, and Tabindex Attributes
+<table>
+    <thead>
+        <tr>
+            <th><strong>Role</strong></th>
+            <th><strong>Attribute</strong></th>
+            <th><strong>Element</strong></th>
+            <th><strong>Usage</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>dialog</td>
+            <td></td>
+            <td>div</td>
+            <td>Identifies the element that serves as the dialog container.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>aria-labelledby="IDREF"</td>
+            <td>div</td>
+            <td>Gives the dialog an accessible name by referring to the element that provides the dialog title.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>aria-labelledby="IDREF"</td>
+            <td>div</td>
+            <td>
+            <ul>
+                <li>Gives the dialog an accessible description by <br> referring to the dialog content that describes the <br> primary message or purpose of the dialog.<br></li>
+                <li>Used in three of the four dialogs included in the example.<br> See the above accessibility features section for an explanation.</li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+                <td></td>
+                <td>aria-modal="true"</td>
+                <td>div</td>
+                <td>Tells assistive technologies that the windows underneath the <br>current dialog are not available for interaction (inert).</td>
+            </tr>
+    </tbody>
+</table>
+
+
 
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
