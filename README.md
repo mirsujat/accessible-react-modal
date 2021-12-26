@@ -152,7 +152,7 @@ In the following description, the term tabbable element refers to any element wi
 
 ### `Example Single Modal`
 
-
+```js | pure
 index.html file
 -------------
     <!DOCTYPE html>
@@ -162,7 +162,7 @@ index.html file
         <div id="modal-root"></div>
     </body>
     </html>
-
+``` 
 
 ```js | pure
  App.js File
