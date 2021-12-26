@@ -476,7 +476,7 @@ openModal = (dialogId) => {
   </Modal>
   ```
 
-`Aditional props you can pass to customize the feel and look of modal`
+`Aditional props you can pass to customize the feel and look of the modal`
 
 - `modalClass` to style the `modal`
 - `dialogLabelStyle` to style dialog `label` element
