@@ -9,15 +9,19 @@ Like non-modal dialogs, modal dialogs contain their tab sequence. That is, Tab a
 In the following description, the term tabbable element refers to any element with a tabindex value of zero or greater. Note that values greater than 0 are strongly discouraged.
 <ul>
     <li>When a dialog opens, focus moves to an element inside the dialog. See notes below regarding initial focus placement.</li>
-    <li>`Tab:`
+    <li><strong>Tab:</strong>
+    <ul>
          <li>Moves focus to the next tabbable element inside the dialog.</li>
          <li>If focus is on the last tabbable element inside the dialog, moves focus to the first tabbable element inside the dialog.</li>
+      </ul>
     </li>
-    <li>`Shift + Tab:`
+    <li><strong>Shift + Tab:</strong>
+    <ul>
         <li>Moves focus to the previous tabbable element inside the dialog.</li>
         <li>If focus is on the first tabbable element inside the dialog, moves focus to the last tabbable element inside the dialog.</li>
+      </ul>
     </li>
-    <li>`Escape:` Closes the dialog.</li>
+    <li><strong>Escape:</strong> Closes the dialog.</li>
 </ul>
 
 > ### NOTE
