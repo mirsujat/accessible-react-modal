@@ -29,10 +29,10 @@ In the following description, the term tabbable element refers to any element wi
 >   * If a dialog is limited to interactions that either provide additional information or  continue processing, it may be advisable to set focus to the element that is likely to be most frequently used, such as an `OK or Continue button`. <br>
 >
 > `2:` When a dialog closes, focus returns to the element that invoked the dialog unless either: <br>
->       * The invoking element no longer exists. Then, focus is set on another element that provides logical work flow.<br>
->       *  The work flow design includes the following conditions that can occasionally make focusing a different element a more logical choice:<br>
->           `1:` It is very unlikely users need to immediately re-invoke the dialog.<br>
->           `2:` The task completed in the dialog is directly related to a subsequent step in the work flow.<br>
+>   * The invoking element no longer exists. Then, focus is set on another element that provides logical work flow.<br>
+>   *  The work flow design includes the following conditions that can occasionally make focusing a different element a more logical choice:<br>
+>         `1:` It is very unlikely users need to immediately re-invoke the dialog.<br>
+>         `2:` The task completed in the dialog is directly related to a subsequent step in the work flow.<br>
 > For example, a grid has an associated toolbar with a button for adding rows. the Add Rows <br>button  opens a dialog that prompts for the number of rows. After the dialog closes, focus <br> is placed in  the first cell of the first new row.<br>
 >
 > `3:` It is strongly recommended that the tab sequence of all dialogs include a visible element <br>with role button that closes the dialog, such as a close icon or cancel button.<br>
