@@ -26,10 +26,10 @@ In the following description, the term tabbable element refers to any element wi
 >   * Unless a condition where doing otherwise is advisable, focus is initially set on the first focusable element. <br>
 >   * If content is large enough that focusing the first interactive element could cause the beginning of content to scroll out of view, it is advisable to add `tabindex=-1` to a static element at the top of the dialog, such as the dialog title or first paragraph, and initially focus that element. <br>
 >   * If a dialog contains the final step in a process that is not easily reversible, such as deleting data or completing a financial transaction, it may be advisable to set focus on the least destructive action, especially if undoing the action is difficult or impossible. The Alert Dialog Pattern is often employed in such circumstances. <br>
->   * If a dialog is limited to interactions that either provide additional information or  continue processing, it may be advisable to set focus to the element that is likely to be most frequently used, such as an `OK or Continue button`. <br>
+>   * If a dialog is limited to interactions that either provide additional information or  continue processing, it may be advisable to set focus to the element that is likely to be most frequently used, such as an `OK or Continue button`. 
 > `2:` When a dialog closes, focus returns to the element that invoked the dialog unless either: <br>
->       `o` The invoking element no longer exists. Then, focus is set on another element that provides logical work flow.<br>
->       `o` The work flow design includes the following conditions that can occasionally make focusing a different element a more logical choice:<br>
+>       * The invoking element no longer exists. Then, focus is set on another element that provides logical work flow.<br>
+>       *  The work flow design includes the following conditions that can occasionally make focusing a different element a more logical choice:<br>
 >           `1:` It is very unlikely users need to immediately re-invoke the dialog.<br>
 >           `2:` The task completed in the dialog is directly related to a subsequent step in the work flow.<br>
 > For example, a grid has an associated toolbar with a button for adding rows. the Add Rows <br>button  opens a dialog that prompts for the number of rows. After the dialog closes, focus <br> is placed in  the first cell of the first new row.<br>
