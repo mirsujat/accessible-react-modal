@@ -152,10 +152,9 @@ In the following description, the term tabbable element refers to any element wi
 
 ### `Example Single Modal`
 
-<code>
+
 index.html file
 -------------
-<code>
     <!DOCTYPE html>
     <html lang="en">
     <body>
@@ -163,9 +162,9 @@ index.html file
         <div id="modal-root"></div>
     </body>
     </html>
-</code>
 
 
+<code>
 App.js File
 ------------
 import React, { Component } from 'react';
