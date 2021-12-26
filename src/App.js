@@ -38,7 +38,7 @@ class App extends Component {
           </ul>
         </header>
         <section>
-          <button className="focusAfterClose"  onClick={ () =>  this.openModal("dialog1")} >Awesome Modal</button>
+          <button className="focusAfterClose"  onClick={ () =>  this.openModal("dialog1")} >Open Awesome Modal</button>
         </section>
         <section>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugiat minus nesciunt itaque molestiae nisi esse a amet praesentium in rerum non, cupiditate autem laboriosam, unde inventore quidem accusantium cumque.</p>
@@ -63,7 +63,7 @@ class App extends Component {
           id="dialog2"
           isOpen={this.state.id === "dialog2" ? this.state.open : false}
           onClose={this.closeModal}
-          label="Awesome Modal"
+          label="Another Awesome Modal"
           focusAfterClose="focusAfterClose"
         >
           <section>
@@ -71,7 +71,6 @@ class App extends Component {
             <p>This is a paragraph from awesome modal</p>
           </section>
              <button>Confirm</button>
-             
         </Modal>
         <Footer></Footer>
       </div>

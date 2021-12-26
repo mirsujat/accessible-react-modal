@@ -1,6 +1,7 @@
 header {
   display: block;
   height: 65px;
+  margin-bottom: 15px;
 }
 footer {
   display: block;
