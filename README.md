@@ -156,11 +156,8 @@ In the following description, the term tabbable element refers to any element wi
 index.html file
 -------------
 <code>
- <body>
     <div id="app-root"></div>
     <div id="modal-root"></div>
-
-</body>
 </code>
 
 App.js File
