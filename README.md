@@ -442,7 +442,7 @@ index.html file
   - `className="focusAfterClose"` an element must have this className which will receive focus after the modal is close, typically the button element which trigger the modal 
 
 
-`For multiple modal`
+### `For multiple modal`
 
 - initialize your state
 ```js|pure
@@ -476,7 +476,7 @@ openModal = (dialogId) => {
   </Modal>
   ```
 
-`Aditional props you can pass to customize the feel and look of the modal`
+### `Aditional props you can pass to customize the feel and look of the modal`
 
 - `modalClass` to style the `modal`
 - `dialogLabelStyle` to style dialog `label` element
