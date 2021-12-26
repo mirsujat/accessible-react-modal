@@ -449,7 +449,8 @@ index.html file
 this.state = { open: false, id: null }
 ```
 ```js|pure
-// function to be called to open modal
+// openModal function will receive an id @param
+// and called with an id @param
 openModal = (dialogId) => {
     this.setState({ open: true, id: dialogId });
   }
