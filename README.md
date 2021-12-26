@@ -62,8 +62,7 @@ In the following description, the term tabbable element refers to any element wi
 >>
 
 # Keyboard Support
-> 
-> <table>
+ <table>
     <thead>
         <tr>
         <th>Key</th>
@@ -95,7 +94,7 @@ In the following description, the term tabbable element refers to any element wi
         </tr>
     </tbody>
 </table>
->> 
+
 
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
