@@ -443,7 +443,8 @@ index.html file
 
 
 `For multiple modal`
-initialize your state
+
+- initialize your state
 ```js|pure
 this.state = { open: false, id: null }
 ```
