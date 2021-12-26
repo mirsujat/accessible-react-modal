@@ -152,7 +152,7 @@ In the following description, the term tabbable element refers to any element wi
 
 ### `Example Single Modal`
 
-`
+<code>
 index.html file
 -------------
  <body>
@@ -228,7 +228,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('app-root')
 );
-`
+</code>
 
 
 
