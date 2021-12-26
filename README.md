@@ -233,9 +233,107 @@ ReactDOM.render(
 );
 ```
 
+```CSS | pure
+/* Modal  */
+.hidden {
+  display: none;
+}
 
+[role="alertdialog"],
+[role="dialog"] {
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid rgb(117, 116, 116);
+  background-color: #fff;
+  min-height: 100vh;
+}
 
+@media screen and (min-width: 640px) {
+  [role="alertdialog"],
+  [role="dialog"] {
+    position: absolute;
+    top: 4rem;
+    left: 50vw; /* move to the middle of the screen (assumes relative parent is the body/viewport) */
+    transform: translateX(
+      -50%
+    ); /* move backwards 50% of this element's width */
+    min-width: calc(640px - (15px * 2)); /* == breakpoint - left+right margin */
+    min-height: auto;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.12), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
 
+.dialog_label {
+  text-align: center;
+}
+.dialog_title {
+  display: inline-block;
+  padding: 0 5px;
+}
+.dialog_close_button {
+  float: right;
+  position: absolute;
+  top: 10px;
+  left: 92%;
+  height: 25px;
+}
+/* native <dialog> element uses the ::backdrop pseudo-element */
+
+/* dialog::backdrop, */
+.dialog-backdrop {
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 640px) {
+  .dialog-backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.dialog-backdrop.active {
+  display: block;
+}
+
+.no-scroll {
+  overflow-y: auto !important;
+}
+
+/* this is added to the body when a dialog is open */
+.has-dialog {
+  overflow: hidden;
+}
+
+.focus_trap {
+  display: inline-block;
+  position: absolute;
+  border: none;
+  top: -20px;
+  background-color: white;
+}
+.focus_trap:focus {
+  border: none;
+  background-color: white;
+  display: inline-block;
+  position: absolute;
+  top: -20px;
+}
+
+*:focus {
+  outline-style: auto;
+  border-radius: 5px;
+}
+.modal_warning {
+  display: block;
+  text-align: center;
+}
+
+```
 
 
 # Getting Started with Create React App
