@@ -460,14 +460,14 @@ openModal = (dialogId) => {
 // function to be called like this
  <button 
     className="focusAfterClose"  
-    onClick={ () =>  this.openModal("dialog2")} >
+    onClick={ () =>  this.openModal("dialog1")} >
     Awesome Modal
  </button>
  ```
  ```js | pure
  //isOpen is set based on the condition
  <Modal
-          id="dialog2"
+          id="dialog1"
           isOpen={this.state.id === "dialog1" ? this.state.open : false}
           onClose={this.closeModal}
           label="Awesome Modal"
