@@ -150,6 +150,86 @@ In the following description, the term tabbable element refers to any element wi
     </li>
 </ol>
 
+### `Example Single Modal`
+
+`
+index.html file
+-------------
+ <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="app-root"></div>
+    <div id="modal-root"></div>
+
+</body>
+
+App.js File
+------------
+import React, { Component } from 'react';
+import Modal from "./Components/Modal/Modal";
+
+
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+   
+    this.state = { open: false}
+  }
+
+  openModal = () => {
+    this.setState({ open: true});
+  }
+  closeModal = () => {
+    this.setState({ open: false });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          Hello From Accessible React Modal
+        </header>
+        <section>
+          <button className="focusAfterClose"  onClick={ this.openModal } >Awesome Modal</button>
+        </section>
+        <Modal
+          id="dialog1"
+          isOpen={ this.state.open }
+          onClose={this.closeModal}
+          label="Awesome Modal"
+          focusAfterClose="focusAfterClose"
+        >
+          <section>
+            <h4>This a awesome Modal </h4>
+            <p>This is a paragraph from awesome modal</p>
+          </section>
+             <button>Ok</button>
+             <button onClick={ this.openModal }>Process Next</button>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+index.js file
+-----------
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('app-root')
+);
+`
+
 
 
 
