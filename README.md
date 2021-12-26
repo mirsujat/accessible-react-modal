@@ -476,6 +476,12 @@ openModal = (dialogId) => {
   </Modal>
   ```
 
+`Aditional props you can pass to customize the feel and look of modal`
+
+- `modalClass` to style the `modal`
+- `dialogLabelStyle` to style dialog `label` element
+- `titleStyle` to style the `title` of the modal
+- `cancelBtnStyle` to style the `cancel button`
 
 
 # Getting Started with Create React App
