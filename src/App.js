@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Modal from "./Components/Modal/Modal";
+import Footer from "./Components/Footer/Footer";
+
 
 
 import './App.css';
@@ -26,7 +28,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          Hello From Accessible React Modal
+          <ul>
+            <li>Accessible React Modal</li>
+            <li> 
+              <a className="download_link" href="https://github.com/mirsujat/accessible-react-modal" target="_blank" rel="noreferrer">
+              Download Source Code 
+              </a> 
+          </li>
+          </ul>
         </header>
         <section>
           <button className="focusAfterClose"  onClick={ () =>  this.openModal("dialog1")} >Awesome Modal</button>
@@ -64,6 +73,7 @@ class App extends Component {
              <button>Confirm</button>
              
         </Modal>
+        <Footer></Footer>
       </div>
     );
   }

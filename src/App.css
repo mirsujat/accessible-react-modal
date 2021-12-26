@@ -1,11 +1,44 @@
+header{
+  display: block;
+  height: 65px;
+}
+footer {
+  display: block;
+  height: 50px;
+  text-align: center;
+  background-color: rgb(189, 188, 188);
+  font-family: "Lucida Sans", sans-serif;
+  font-size: smaller;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+ul{
+  display: block;
+}
+li{
+  display: inline-block;
+  list-style: none;
+  padding-top: 5px;
+  margin: 0 5px;
+}
+a{
+  color: azure;
+}
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+.download_link {
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
