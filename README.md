@@ -36,10 +36,30 @@ In the following description, the term tabbable element refers to any element wi
 > For example, a grid has an associated toolbar with a button for adding rows. the Add Rows <br>button  opens a dialog that prompts for the number of rows. After the dialog closes, focus <br> is placed in  the first cell of the first new row.<br>
 >
 > `3:` It is strongly recommended that the tab sequence of all dialogs include a visible element <br>with role button that closes the dialog, such as a close icon or cancel button.<br>
+>
 >>
 
+`WAI-ARIA Roles, States, and Properties`
+<ul>
+    <li>The element that serves as the dialog container has a role of <strong>dialog.</strong></li>
+    <li>All elements required to operate the dialog are descendants of the element that has role <strong>dialog.</strong></li>
+    <li>The dialog container element has <strong>aria-modal</strong> set to <strong>true.</strong></li>
+    <li>`The dialog has either:`
+        <li>A value set for the <strong>aria-labelledby</strong> property that refers to a visible dialog title.</li>
+        <li>A label specified by <strong>aria-label.</strong></li>
+    </li>
+    <li>Optionally, the <strong>aria-describedby</strong> property is set on the element with the <strong>dialog</strong> role to indicate which element or elements in the dialog contain content that describes the primary purpose or message of the dialog. Specifying descriptive elements enables screen readers to announce the description along with the dialog title and initially focused element when the dialog opens.</li>
+</ul>
 
+> ### NOTE
+> * Because marking a dialog modal by setting <strong>aria-modal</strong> to <strong>true</strong> can prevent users of some assistive technologies from perceiving content outside the dialog, users of those technologies will experience severe negative ramifications if a dialog is marked modal but does not behave as a modal for other users. So, mark a dialog modal <strong>only when both:</strong><br>
+>   1: Application code prevents all users from interacting in any way with content outside of it.<br>
+>   2: Visual styling obscures the content outside of it. <br>
+> * The <strong>aria-modal</strong> property introduced by ARIA 1.1 replaces <strong>aria-hidden</strong> for informing assistive technologies that content outside a dialog is inert. However, in legacy dialog implementations where <strong>aria-hidden</strong>is used to make content outside a dialog inert for assistive technology users, it is important that:<br>
+> 1: <strong>aria-hidden</strong> is set to true on each element containing a portion of the inert layer.
+> 2: The dialog element is not a descendant of any element that has <strong>aria-hidden</strong> set to <strong>true.</strong>
 
+>>
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
