@@ -435,11 +435,11 @@ index.html file
   </Modal>
   ``` 
    `modal must have props`
-  - id refers to the id of the modal
-  - isOpen props determine wheter the modal is open or close state
+  - `id props` refers to the id of the modal
+  - `isOpen props` props determine wheter the modal is open or close state
   - label props must have a label props which is the first focusable element inside when the modal is open
-  - focusAfterClose props is required, when modal close focus back to this element
-  - className="focusAfterClose" an element must have this className which will receive focus after the modal is close, typically the button element which trigger the modal 
+  - `focusAfterClose props` props is required, when modal close focus back to this element
+  - `className="focusAfterClose"` an element must have this className which will receive focus after the modal is close, typically the button element which trigger the modal 
 
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
