@@ -10,12 +10,12 @@
 
 
 
-`Dialog (Modal)`
+### `Dialog (Modal)`
 A dialog is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert. That is, users cannot interact with content outside an active dialog window. Inert content outside an active dialog is typically visually obscured or dimmed so it is difficult to discern, and in some implementations, attempts to interact with the inert content cause the dialog to close.
 
 Like non-modal dialogs, modal dialogs contain their tab sequence. That is, Tab and Shift + Tab do not move focus outside the dialog. However, unlike most non-modal dialogs, modal dialogs do not provide means for moving keyboard focus outside the dialog window without closing the dialog.
 
-`Keyboard Interaction`
+### `Keyboard Interaction`
 In the following description, the term tabbable element refers to any element with a tabindex value of zero or greater. Note that values greater than 0 are strongly discouraged.
 <ul>
     <li>When a dialog opens, focus moves to an element inside the dialog. See notes below regarding initial focus placement.</li>
