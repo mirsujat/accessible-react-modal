@@ -60,6 +60,42 @@ In the following description, the term tabbable element refers to any element wi
 > 2: The dialog element is not a descendant of any element that has <strong>aria-hidden</strong> set to <strong>true.</strong>
 
 >>
+
+# Keyboard Support
+<table>
+    <thead>
+        <tr>
+        <th>Key</th>
+        <th>Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tab</td>
+            <td>
+                <ul>
+                    <li>Moves focus to next focusable element inside the dialog.</li>
+                    <li>When focus is on the last focusable element in the dialog,<br> moves focus to the first focusable element in the dialog.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Shift + Tab</td>
+            <td>
+                <ul>
+                    <li>Moves focus to previous focusable element inside the dialog.</li>
+                    <li>When focus is on the first focusable element in the dialog,<br> moves focus to the last focusable element in the dialog.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Escape</td>
+            <td>Closes the dialog.</td>
+        </tr>
+    </tbody>
+</table>
+
+
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
