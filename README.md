@@ -1,4 +1,6 @@
 ## Accessible React Modal
+### [See Demo](https://accessible-react-modal.netlify.app/)
+
 
 `Dialog (Modal)`
 A dialog is a window overlaid on either the primary window or another dialog window. Windows under a modal dialog are inert. That is, users cannot interact with content outside an active dialog window. Inert content outside an active dialog is typically visually obscured or dimmed so it is difficult to discern, and in some implementations, attempts to interact with the inert content cause the dialog to close.
