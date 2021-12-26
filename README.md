@@ -165,15 +165,14 @@ index.html file
 
 
 
-App.js File
+> App.js File
 ------------
-import React, { Component } from 'react';
-import Modal from "./Components/Modal/Modal";
+> import React, { Component } from 'react';
+> import Modal from "./Components/Modal/Modal";
 
+> import './App.css';
 
-import './App.css';
-
-class App extends Component {
+> class App extends Component {
   constructor(props) {
     super(props);
    
@@ -214,16 +213,16 @@ class App extends Component {
     );
   }
 }
+> export default App;
+>> 
 
-export default App;
-
-index.js file
+> index.js file
 -----------
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+> import React from 'react'; 
+> import ReactDOM from 'react-dom';
+> import './index.css';
+> import App from './App';
+> import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -231,6 +230,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('app-root')
 );
+>> 
 
 
 
