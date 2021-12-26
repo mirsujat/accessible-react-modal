@@ -1,5 +1,11 @@
 ## Accessible React Modal
-### [See Demo](https://accessible-react-modal.netlify.app/)
+### [See Live Demo](https://accessible-react-modal.netlify.app/)
+
+### Accessibility Audit
+#### Google Lighthouse
+![Google Lighthouse](https://github.com/mirsujat/accessible-react-modal/blob/master/Accessible-React_Modal-Lighthouse-Report.png)
+
+#### NVDA 100%
 
 
 `Dialog (Modal)`
