@@ -65,8 +65,8 @@ In the following description, the term tabbable element refers to any element wi
  <table>
     <thead>
         <tr>
-        <th>Key</th>
-        <th>Function</th>
+        <th><strong>Key</strong></th>
+        <th><strong>Function</strong></th>
         </tr>
     </thead>
     <tbody>
