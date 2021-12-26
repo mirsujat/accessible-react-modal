@@ -61,7 +61,7 @@ In the following description, the term tabbable element refers to any element wi
 
 >>
 
-# Keyboard Support
+# `Keyboard Support`
  <table>
     <thead>
         <tr>
@@ -95,7 +95,7 @@ In the following description, the term tabbable element refers to any element wi
     </tbody>
 </table>
 
-# Role, Property, State, and Tabindex Attributes
+# `Role, Property, State, and Tabindex Attributes`
 <table>
     <thead>
         <tr>
