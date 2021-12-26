@@ -86,10 +86,11 @@ class Modal extends Component {
         this.lastFocus.current.focus();
      }
     }
-   if(e.keyCode === 32){
+    //Escape on exit
+   if(e.keyCode === 27){
     this.handleClose();
    }
-  //  console.log("keyCode: ", e.keyCode);
+  
   }
 
 handleClose = () =>{
@@ -129,7 +130,7 @@ handleClose = () =>{
               >
               <div 
               id={this.props.label}
-              className="dialog_label" 
+              className={this.props.dialogLabelStyle ? this.props.dialogLabelStyle : "dialog_label"} 
               >
                 <span
                 className={this.props.titleStyle ? this.props.titleStyle : "dialog_title"}
