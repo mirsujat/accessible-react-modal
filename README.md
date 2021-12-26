@@ -451,12 +451,13 @@ this.state = { open: false, id: null }
 ```js|pure
 // openModal function will receive an id @param
 // and called with an id @param
+
 openModal = (dialogId) => {
     this.setState({ open: true, id: dialogId });
   }
 ```
 ```js|pure
-// function to called like this
+// function to be called like this
  <button 
     className="focusAfterClose"  
     onClick={ () =>  this.openModal("dialog1")} >
