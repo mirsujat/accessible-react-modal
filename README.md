@@ -441,6 +441,40 @@ index.html file
   - `focusAfterClose props` props is required, when modal close focus back to this element
   - `className="focusAfterClose"` an element must have this className which will receive focus after the modal is close, typically the button element which trigger the modal 
 
+
+`For multiple modal`
+initialize your state
+```js|pure
+this.state = { open: false, id: null }
+```
+```js|pure
+// function to be called to open modal
+openModal = (dialogId) => {
+    this.setState({ open: true, id: dialogId });
+  }
+```
+```js|pure
+// function to called like this
+ <button 
+    className="focusAfterClose"  
+    onClick={ () =>  this.openModal("dialog1")} >
+    Awesome Modal
+ </button>
+ ```
+ ```js | pure
+ //isOpen is set based on the condition
+ <Modal
+          id="dialog2"
+          isOpen={this.state.id === "dialog1" ? this.state.open : false}
+          onClose={this.closeModal}
+          label="Awesome Modal"
+          focusAfterClose="focusAfterClose"
+        >
+  </Modal>
+  ```
+
+
+
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
