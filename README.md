@@ -148,7 +148,6 @@ In the following description, the term tabbable element refers to any element wi
             <li>The dialog element is not a descendant of any element that has<strong>aria-hidden</strong> set to <strong>true</strong>.</li>
         </ol>
     </li>
-
 </ol>
 
 
