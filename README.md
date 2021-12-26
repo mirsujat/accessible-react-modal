@@ -164,7 +164,7 @@ index.html file
     </html>
 
 
-<code>
+
 App.js File
 ------------
 import React, { Component } from 'react';
@@ -231,7 +231,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('app-root')
 );
-</code>
+
 
 
 
