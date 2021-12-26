@@ -61,7 +61,7 @@ In the following description, the term tabbable element refers to any element wi
 
 >>
 
-# `Keyboard Support`
+###  `Keyboard Support`
  <table>
     <thead>
         <tr>
@@ -95,7 +95,7 @@ In the following description, the term tabbable element refers to any element wi
     </tbody>
 </table>
 
-# `Role, Property, State, and Tabindex Attributes`
+###  `Role, Property, State, and Tabindex Attributes`
 <table>
     <thead>
         <tr>
@@ -138,7 +138,7 @@ In the following description, the term tabbable element refers to any element wi
     </tbody>
 </table>
 
-# `Notes on aria-modal and aria-hidden`
+### `Notes on aria-modal and aria-hidden`
 <ol>
   <li>The <strong>aria-modal</strong> property was introduced in ARIA 1.1. As a new property, screen reader users may experience varying degrees of support for it.</li>
   <li>Applying the <strong>aria-modal</strong> property to the <strong>dialog</strong> element replaces the technique of using <strong>aria-hidden</strong> on the background for informing assistive technologies that content outside a dialog is inert.</li>
