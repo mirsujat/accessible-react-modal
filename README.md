@@ -39,7 +39,7 @@ In the following description, the term tabbable element refers to any element wi
 >
 >>
 
-`WAI-ARIA Roles, States, and Properties`
+### `WAI-ARIA Roles, States, and Properties`
 <ul>
     <li>The element that serves as the dialog container has a role of <strong>dialog.</strong></li>
     <li>All elements required to operate the dialog are descendants of the element that has role <strong>dialog.</strong></li>
