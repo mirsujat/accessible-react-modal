@@ -460,7 +460,7 @@ openModal = (dialogId) => {
 // function to be called like this
  <button 
     className="focusAfterClose"  
-    onClick={ () =>  this.openModal("dialog1")} >
+    onClick={ () =>  this.openModal("dialog2")} >
     Awesome Modal
  </button>
  ```
