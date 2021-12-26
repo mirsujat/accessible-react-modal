@@ -234,6 +234,7 @@ ReactDOM.render(
 ```
 
 ```CSS | pure
+CSS
 /* Modal  */
 .hidden {
   display: none;
