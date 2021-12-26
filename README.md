@@ -408,6 +408,39 @@ class App extends Component {
 export default App;
 ```
 
+## How to use
+
+```html | pure
+index.html file
+-------------
+    <!DOCTYPE html>
+    <html lang="en">
+    <body>
+        <div id="app-root"></div>
+        <div id="modal-root"></div>
+    </body>
+    </html>
+```
+* Set your index.html file just like the above mention 
+
+```js| pure
+<Modal
+          id="dialog1"
+          isOpen={ this.state.open }
+          onClose={this.closeModal}
+          label="Awesome Modal"
+          focusAfterClose="focusAfterClose"
+        >
+
+  </Modal>
+  ``` 
+  * modal must have an 
+  - id refers to the id of the modal
+  - isOpen props determine wheter the modal is open or close state
+  - label props must have a label props which is the first focusable element inside when the modal is open
+  - focusAfterClose props is required, when modal close focus back to this element
+  - className="focusAfterClose" an element must have this className which will receive focus after the modal is close, typically the button element which trigger the modal 
+
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
