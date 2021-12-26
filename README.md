@@ -137,6 +137,7 @@ In the following description, the term tabbable element refers to any element wi
             </tr>
     </tbody>
 </table>
+
 # `Notes on aria-modal and aria-hidden`
 <ol>
   <li>The <strong>aria-modal</strong> property was introduced in ARIA 1.1. As a new property, screen reader users may experience varying degrees of support for it.</li>
