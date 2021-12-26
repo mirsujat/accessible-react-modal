@@ -56,7 +56,7 @@ In the following description, the term tabbable element refers to any element wi
 >   1: Application code prevents all users from interacting in any way with content outside of it.<br>
 >   2: Visual styling obscures the content outside of it. <br>
 > * The <strong>aria-modal</strong> property introduced by ARIA 1.1 replaces <strong>aria-hidden</strong> for informing assistive technologies that content outside a dialog is inert. However, in legacy dialog implementations where <strong>aria-hidden</strong>is used to make content outside a dialog inert for assistive technology users, it is important that:<br>
-> 1: <strong>aria-hidden</strong> is set to true on each element containing a portion of the inert layer.<br>
+> 1: <strong>aria-hidden</strong> is set to <strong>true </strong>on each element containing a portion of the inert layer.<br>
 > 2: The dialog element is not a descendant of any element that has <strong>aria-hidden</strong> set to <strong>true.</strong>
 
 >>
