@@ -47,12 +47,10 @@ class Modal extends Component {
      if(this.props.focusAfterClose){
         this.focusAfterClose =  window.document.getElementsByClassName("focusAfterClose");
       }
-   
     //init state
     this.state = { focus: false}
 
   }
-
 
   componentDidUpdate(){
     this.setFocus();
