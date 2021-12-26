@@ -137,7 +137,16 @@ In the following description, the term tabbable element refers to any element wi
             </tr>
     </tbody>
 </table>
-
+# `Notes on aria-modal and aria-hidden`
+<ol>
+  <li>The <strong>aria-modal</strong> property was introduced in ARIA 1.1. As a new property, screen reader users may experience varying degrees of support for it.</li>
+  <li>Applying the <strong>aria-modal</strong> property to the <strong>dialog</strong> element replaces the technique of using <strong>aria-hidden</strong> on the background for informing assistive technologies that content outside a dialog is inert.</li>
+  <li>In legacy dialog implementations where <strong>aria-hidden</strong> is used to make content outside a dialog inert for assistive technology users, it is important that:</li>
+  <li>
+    <li><strong>aria-hidden</strong> is set to <strong>true</strong> on each element containing a portion of the inert layer.</li>
+    <li>The dialog element is not a descendant of any element that has<strong>aria-hidden</strong> set to <strong>true</strong>.</li>
+  </li>
+</ol>
 
 
 # Getting Started with Create React App
