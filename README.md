@@ -434,7 +434,7 @@ index.html file
 
   </Modal>
   ``` 
-  * modal must have an 
+   `modal must have props`
   - id refers to the id of the modal
   - isOpen props determine wheter the modal is open or close state
   - label props must have a label props which is the first focusable element inside when the modal is open
