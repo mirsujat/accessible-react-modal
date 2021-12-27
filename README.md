@@ -1,4 +1,7 @@
 ## Accessible React Modal
+
+#### Followed By [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)
+
 ### [See Live Demo](https://accessible-react-modal.netlify.app/)
 
 ### Accessibility Audit
