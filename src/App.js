@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" data-testid="app">
         <header className="App-header">
           <ul>
             <li>Accessible React Modal</li>

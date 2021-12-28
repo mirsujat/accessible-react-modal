@@ -2,7 +2,12 @@ import React,{Component, Fragment} from 'react';
 import ReactDOM from "react-dom";
 
 const body = document.body;
-const modalRoot = document.getElementById("modal-root");
+let modalRoot = document.getElementById("modal-root");
+if(!modalRoot){
+  modalRoot = document.createElement("div");
+  modalRoot.setAttribute("id", "modal-root");
+  document.body.appendChild(modalRoot);
+}
 
 
 class Portal extends Component {
@@ -125,6 +130,7 @@ handleClose = () =>{
               className={modalClass} 
               open={this.props.isOpen}
               onKeyUp={(e) =>  this.onKeyUp(e)}
+              data-testid="modal"
               >
               <div 
               id={this.props.label}
@@ -142,7 +148,7 @@ handleClose = () =>{
               </div>
             {this.props.children}
 
-              <button className={this.props.cancelBtnStyle} onClick={this.handleClose} 
+              <button data-testid="cancel" className={this.props.cancelBtnStyle} onClick={this.handleClose} 
               ref={this.lastFocus}>Cancel</button>
             </div>
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
