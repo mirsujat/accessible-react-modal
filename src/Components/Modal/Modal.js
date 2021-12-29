@@ -148,8 +148,8 @@ handleClose = () =>{
               </div>
             {this.props.children}
 
-              <button data-testid="cancel" className={this.props.cancelBtnStyle} onClick={this.handleClose} 
-              ref={this.lastFocus}>Cancel</button>
+              <button data-testid="cancel" className={this.props.cancelBtnStyle ? this.props.cancelBtnStyle : "cancel-btn" } onClick={this.handleClose} 
+              ref={this.lastFocus}>{this.props.closeText ? this.props.closeText : "Cancel" }</button>
             </div>
           <div id="last" className="focus_trap" tabIndex="0" ref={this.nextElRef}
           onKeyUp={(e) =>  this.onKeyUp(e)}  ></div>

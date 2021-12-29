@@ -57,7 +57,7 @@ class App extends Component {
             <p>This is a paragraph from awesome modal</p>
           </section>
              <button>Ok</button>
-             <button onClick={()=> this.openModal("dialog2")}>Process Next</button>
+             <button className="process-next" onClick={()=> this.openModal("dialog2")}>Process Next</button>
         </Modal>
         <Modal
           id="dialog2"
